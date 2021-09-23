@@ -1,9 +1,18 @@
 import React from "react";
 import img from "../Assets/Banner.jpg";
 import profile from "../Assets/profile.jpg";
-import { Eye, Location, ShareBtn } from "./Atoms/BlogcardAtoms";
+import { Eye, Follower, Location, ShareBtn } from "./Atoms/BlogcardAtoms";
 
-const BlogCard = ({ name, title, details, pic, inBoxTxt, views }) => {
+const BlogCard = ({
+  name,
+  title,
+  details,
+  pic,
+  inBoxTxt,
+  views,
+  first,
+  logedin,
+}) => {
   const [width, setWidth] = React.useState(window.innerWidth);
 
   React.useEffect(() => {
@@ -119,7 +128,8 @@ const BlogCard = ({ name, title, details, pic, inBoxTxt, views }) => {
           </div>
         </div>
         <div style={{ flex: 1 }}>
-          <Location location="noida" />
+          {first ? <Location location="noida" /> : null}
+          {first && logedin && <Follower />}
         </div>
       </div>
     );

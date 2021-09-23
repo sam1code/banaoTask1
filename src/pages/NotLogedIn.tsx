@@ -6,6 +6,7 @@ import {
   MobileNav,
   Main,
 } from "../components/index";
+import toast from "react-hot-toast";
 
 const NotLogedIn = () => {
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -18,6 +19,7 @@ const NotLogedIn = () => {
     };
 
     window.addEventListener("resize", updateWindowDimensions);
+    toast("Here is your toast.");
 
     return () => window.removeEventListener("resize", updateWindowDimensions);
   }, []);
@@ -26,7 +28,7 @@ const NotLogedIn = () => {
 
   return (
     <div>
-      {width > 992 && <Header />}
+      {width > 992 && <Header loginUser="" />}
       {width > 992 ? (
         <MainBanner />
       ) : (
@@ -38,6 +40,22 @@ const NotLogedIn = () => {
         />
       )}
       {width > 767 ? <Navbar /> : <MobileNav />}
+      <Main
+        title="What if famous brands had regular fonts? Meet RegulaBrands!"
+        details="I’ve worked in UX for the better part of a decade. F.."
+        views="50.23k views"
+        first
+      />
+      <Main
+        title="What if famous brands had regular fonts? Meet RegulaBrands!"
+        details="I’ve worked in UX for the better part of a decade. F.."
+        views="50.23k views"
+      />
+      <Main
+        title="What if famous brands had regular fonts? Meet RegulaBrands!"
+        details="I’ve worked in UX for the better part of a decade. F.."
+        views="50.23k views"
+      />
       <Main
         title="What if famous brands had regular fonts? Meet RegulaBrands!"
         details="I’ve worked in UX for the better part of a decade. F.."

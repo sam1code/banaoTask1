@@ -2,10 +2,12 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import fb from "../../Assets/fb.png";
 import google from "../../Assets/search.png";
+import { Link } from "react-router-dom";
 
 const SigninForm = () => {
   return (
     <>
+      <h1>Create Account</h1>
       <Form>
         <Form.Group className=" d-flex ">
           <Form.Control type="fname" placeholder="Firstname" />
@@ -19,14 +21,11 @@ const SigninForm = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-
-        <Button
-          variant="primary"
-          className="rounded-pill px-5 w-100"
-          type="submit"
-        >
-          SignIn
-        </Button>
+        <Link to="/user" style={{ textDecoration: "none", color: "black" }}>
+          <Button variant="primary" className="rounded-pill px-5 w-100">
+            SignIn
+          </Button>
+        </Link>
       </Form>
       <Button
         variant="outline-light"

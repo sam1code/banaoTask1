@@ -19,7 +19,7 @@ import {
 import SigninForm from "./Atoms/SigninForm";
 import LoginForm from "./Atoms/LoginForm";
 
-const Header = () => {
+const Header = ({ loginUser }) => {
   function MyVerticallyCenteredModal(props) {
     const [signin, setSignin] = React.useState(true);
     return (
@@ -50,7 +50,7 @@ const Header = () => {
         <Modal.Body>
           <Container>
             <Row>
-              <Col>{signin ? <SigninForm /> : <LoginForm/></Col>
+              <Col>{signin ? <SigninForm /> : <LoginForm />}</Col>
               <Col>
                 {signin ? (
                   <>
@@ -106,9 +106,16 @@ const Header = () => {
             <CoustomSearch />
           </Col>
           <Col>
-            <div onClick={() => setModalShow(true)}>
-              <NotLogedin />
-            </div>
+            {loginUser ? (
+              <div>
+                <Logedin name="User Name" />
+              </div>
+            ) : (
+              <div onClick={() => setModalShow(true)}>
+                <NotLogedin />
+              </div>
+            )}
+
             <MyVerticallyCenteredModal
               show={modalShow}
               onHide={() => setModalShow(false)}

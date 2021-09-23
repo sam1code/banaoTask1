@@ -174,7 +174,12 @@ export const Logedin = ({ pic, name }: ILogedin) => {
             <img
               src={pic || profile}
               className="rounded-circle d-inline-block"
-              style={{ height: "2.5rem", marginTop: "-0.5rem" }}
+              style={{
+                height: "2.5rem",
+                marginTop: "-0.5rem",
+                textDecoration: "none",
+                color: "black",
+              }}
               alt=""
             />
             &nbsp; &nbsp; &nbsp;

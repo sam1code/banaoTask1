@@ -6,6 +6,7 @@ import google from "../../Assets/search.png";
 const LoginForm = () => {
   return (
     <>
+      <h2>Sign In</h2>
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Control type="email" placeholder="Enter email" />
