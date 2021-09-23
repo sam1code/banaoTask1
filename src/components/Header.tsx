@@ -1,17 +1,27 @@
 import React from "react";
-import { Col, Container, Modal, Row, Button, Alert } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Modal,
+  Row,
+  Button,
+  Alert,
+  Form,
+} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import mypic from "../Assets/MyPic.jpg";
+import register from "../Assets/register.png";
 import {
   BrandName,
   CoustomSearch,
-  CreateSvg,
   Logedin,
   NotLogedin,
 } from "./Atoms/HeaderAtoms";
+import SigninForm from "./Atoms/SigninForm";
+import LoginForm from "./Atoms/LoginForm";
 
 const Header = () => {
   function MyVerticallyCenteredModal(props) {
+    const [signin, setSignin] = React.useState(true);
     return (
       <Modal
         {...props}
@@ -40,20 +50,46 @@ const Header = () => {
         <Modal.Body>
           <Container>
             <Row>
-              <Col>Helklo</Col>
+              <Col>{signin ? <SigninForm /> : <LoginForm/></Col>
               <Col>
-                <small className="d-flex justify-content-end">
-                  Already have account?
-                  <span style={{ color: "blue", cursor: "pointer" }}>
-                    Signin
-                  </span>
-                </small>
-                <CreateSvg />
+                {signin ? (
+                  <>
+                    <small className="d-flex justify-content-end">
+                      Already have account?
+                      <span
+                        style={{ color: "blue", cursor: "pointer" }}
+                        onClick={() => setSignin(false)}
+                      >
+                        SignIn
+                      </span>
+                    </small>
+                    <img src={register} alt="" />
+                    <br />
+                    <small>
+                      By signing up, you agree to our
+                      <a href="#">Terms & conditions</a> ,{" "}
+                      <a href="#">Privacy policy</a>
+                    </small>
+                  </>
+                ) : (
+                  <>
+                    <small className="d-flex justify-content-end">
+                      Don’t have an account yet?
+                      <span
+                        style={{ color: "blue", cursor: "pointer" }}
+                        onClick={() => setSignin(true)}
+                      >
+                        Create new for free!
+                      </span>
+                    </small>
+                    <img src={register} alt="" />
+                    <br />
+                  </>
+                )}
               </Col>
             </Row>
           </Container>
         </Modal.Body>
-        <Modal.Footer>{/* <Button onClick={}>Close</Button> */}</Modal.Footer>
       </Modal>
     );
   }
