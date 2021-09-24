@@ -1,6 +1,5 @@
 import { Button } from "react-bootstrap";
 import React from "react";
-import Banner from "../Assets/Banner.jpg";
 import { BackBtn } from "./Atoms/MainBannerAtoms";
 import { IMainBanner } from "./types/index";
 import { NavbarAtoms } from "./Atoms/NavBarAtoms";
@@ -14,14 +13,13 @@ const MainBanner = ({
   padHadLeft,
   mobMenu,
 }: IMainBanner) => {
-  const Bannerpic = BannerImage || Banner;
   const bgImgHeight = bannerHeight || "27.5rem";
   return (
     <div
       style={{
         height: `${bgImgHeight}`,
         position: "relative",
-        backgroundImage: `url(${Bannerpic})`,
+        backgroundImage: `url(${BannerImage})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         color: "#ffffff",
@@ -52,8 +50,8 @@ const MainBanner = ({
             zIndex: -1,
           }}
         >
-          <h2>{name || "Computer Engineering"}</h2>
-          <div>{about || "142,765 Computer Engineers follow this"}</div>
+          <h2>{name || "Display Name"}</h2>
+          <div>{about || "Description of the title"}</div>
         </div>
       </div>
     </div>

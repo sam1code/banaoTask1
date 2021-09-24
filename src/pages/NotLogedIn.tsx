@@ -7,6 +7,7 @@ import {
   Main,
 } from "../components/index";
 import toast from "react-hot-toast";
+import { Data, MainBannerData } from "../../mock/data";
 
 const NotLogedIn = () => {
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -25,42 +26,46 @@ const NotLogedIn = () => {
   }, []);
 
   console.log("give height", width);
+  const postCount = 32;
 
   return (
     <div>
       {width > 992 && <Header loginUser="" />}
       {width > 992 ? (
-        <MainBanner />
+        <MainBanner
+          BannerImage={MainBannerData.image}
+          name={MainBannerData.title}
+          about={MainBannerData.description}
+        />
       ) : (
         <MainBanner
           mobMenu
           bannerHeight="14.75rem"
           padHadTop="7rem"
           padHadLeft="2rem"
+          BannerImage={MainBannerData.image}
+          name={MainBannerData.title}
+          about={MainBannerData.description}
         />
       )}
-      {width > 767 ? <Navbar /> : <MobileNav />}
-      <Main
-        title="What if famous brands had regular fonts? Meet RegulaBrands!"
-        details="I’ve worked in UX for the better part of a decade. F.."
-        views="50.23k views"
-        first
-      />
-      <Main
-        title="What if famous brands had regular fonts? Meet RegulaBrands!"
-        details="I’ve worked in UX for the better part of a decade. F.."
-        views="50.23k views"
-      />
-      <Main
-        title="What if famous brands had regular fonts? Meet RegulaBrands!"
-        details="I’ve worked in UX for the better part of a decade. F.."
-        views="50.23k views"
-      />
-      <Main
-        title="What if famous brands had regular fonts? Meet RegulaBrands!"
-        details="I’ve worked in UX for the better part of a decade. F.."
-        views="50.23k views"
-      />
+      {width > 767 ? <Navbar postCount={`${postCount}`} /> : <MobileNav />}
+
+      {Data.map((elem, ind) => {
+        return (
+          <Main
+            title={elem.title}
+            details={elem.description}
+            views={elem.views}
+            imgSrc={elem.imgSrc}
+            pic={elem.profilePic}
+            tag={elem.tag}
+            name={elem.auther}
+            key={ind}
+            first={ind}
+            btnData={elem.btnData}
+          />
+        );
+      })}
     </div>
   );
 };

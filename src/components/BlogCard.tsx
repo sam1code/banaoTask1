@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import img from "../Assets/Banner.jpg";
 import profile from "../Assets/profile.jpg";
 import { Eye, Follower, Location, ShareBtn } from "./Atoms/BlogcardAtoms";
@@ -12,6 +13,9 @@ const BlogCard = ({
   views,
   first,
   logedin,
+  imgSrc,
+  tag,
+  btnData,
 }) => {
   const [width, setWidth] = React.useState(window.innerWidth);
 
@@ -35,20 +39,19 @@ const BlogCard = ({
           style={{
             width: "22.5rem",
             border: "1px",
-            height: "23.3rem",
             borderRadius: "5px",
           }}
         >
-          <img
-            src={img}
-            className="w-100 rounded"
-            style={{ height: "10rem" }}
-            alt=""
-          />
+          {imgSrc && (
+            <img
+              src={imgSrc}
+              className="w-100 rounded"
+              style={{ height: "10rem" }}
+              alt=""
+            />
+          )}
 
-          <p style={{ fontSize: ".8rem", marginTop: "1rem" }}>
-            &nbsp;&#9997;&#65039; Article
-          </p>
+          <p style={{ fontSize: ".8rem", marginTop: "1rem" }}>{tag}</p>
           <div className="d-flex ">
             <b>
               <p>{title}</p>
@@ -56,10 +59,18 @@ const BlogCard = ({
           </div>
           <p style={{ fontSize: ".9rem" }}>{details}</p>
           <div>{inBoxTxt}</div>
+          {btnData && (
+            <Button
+              variant="outline-secondary"
+              className="w-100 mt-2 rounded-pill"
+            >
+              {btnData}
+            </Button>
+          )}
           <div className="d-flex justify-content-between">
             <div className="d-flex ">
               <img
-                src={pic || profile}
+                src="https://i.ibb.co/m4Fx26Q/Rectangle-3.png"
                 className="rounded-circle d-inline-block mt-1"
                 style={{ height: "3rem", marginTop: "-0.5rem" }}
                 alt=""
@@ -78,7 +89,7 @@ const BlogCard = ({
   };
   const Large = () => {
     return (
-      <div className="d-flex">
+      <div className="d-flex" style={{ overflowX: "hidden" }}>
         <div
           style={{ flex: 2 }}
           className="d-flex flex-column align-items-center  rounded"
@@ -88,20 +99,19 @@ const BlogCard = ({
             style={{
               width: "43.25rem",
               border: "1px",
-              height: "29.5rem",
               borderRadius: "5px",
             }}
           >
-            <img
-              src={img}
-              className="w-100 rounded"
-              style={{ height: "14.75rem" }}
-              alt=""
-            />
+            {imgSrc && (
+              <img
+                src={imgSrc}
+                className="w-100 rounded-top"
+                style={{ height: "14.75rem" }}
+                alt=""
+              />
+            )}
 
-            <p style={{ fontSize: ".8rem", marginTop: "1rem" }}>
-              &nbsp;&#9997;&#65039; Article
-            </p>
+            <p style={{ fontSize: ".8rem", marginTop: "1rem" }}>{tag}</p>
             <div className="d-flex ">
               <b>
                 <h3>{title}</h3>
@@ -109,6 +119,14 @@ const BlogCard = ({
             </div>
             <p>{details}</p>
             <div>{inBoxTxt}</div>
+            {btnData && (
+              <Button
+                variant="outline-secondary"
+                className="w-100 mt-2 rounded-pill"
+              >
+                {btnData}
+              </Button>
+            )}
             <div className="d-flex justify-content-between">
               <div className="d-flex ">
                 <img
@@ -128,8 +146,11 @@ const BlogCard = ({
           </div>
         </div>
         <div style={{ flex: 1 }}>
-          {first ? <Location location="noida" /> : null}
-          {first && logedin && <Follower />}
+          {first === 0 ? <Location location="noida" /> : null}
+          <br />
+          <br />
+          <br />
+          {first === 0 && logedin && <Follower />}
         </div>
       </div>
     );

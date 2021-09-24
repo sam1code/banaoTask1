@@ -11,12 +11,12 @@ const Navbar = ({
   jobCount,
 }: IMainNav) => {
   return (
-    <div className="border-bottom" style={{ zIndex: 10 }}>
+    <div className="border-bottom" style={{ zIndex: 10, overflowX: "hidden" }}>
       <Container>
         <Row>
           <Col>
             <div className="d-flex justify-content-around py-2">
-              <div style={{ cursor: "pointer" }}>AllPosts{postCount}</div>
+              <div style={{ cursor: "pointer" }}>AllPosts({postCount})</div>
               <div style={{ cursor: "pointer", color: "#8A8A8A" }}>
                 Article{articleCount}
               </div>
